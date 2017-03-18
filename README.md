@@ -17,7 +17,7 @@ python Leaky.py --clients client3.txt --sources source3.txt --timeout 9001 --out
 
 <b>[+] Description:</b><br />
 
-This is a simple script which uses google to define search terms to search sites that have been indexed.<br />
+Searches online paste sites for certain search terms which can indicate a possible data breach.<br />
 For example if your client signed up to a small business website, which ended up being a victim of a data breach.<br />
 The results could appear on various different paste sites, or other sources. This tool searches for domains on those specified sources.
 <hr>
