@@ -9,9 +9,9 @@
 
 <b>[+] Defaults:</b><br />
 
-clients.conf - contains line by line of the domain you wish to search.
-sources.conf - contains line by line the sites you wish to search against.
-proxies.conf - contains the proxies you wish to send requests through (faster).
+clients.conf - contains line by line of the domain you wish to search.<br />
+sources.conf - contains line by line the sites you wish to search against.<br />
+proxy.conf - contains the proxies you wish to send requests through (faster).<br />
 
 <b>[+] Usage Examples:</b><br />
 
@@ -19,7 +19,7 @@ screen python Leaky.py<br />
 python Leaky.py -c allclients.conf -s allsources.conf<br />
 python Leaky.py -c client1.conf  -s source1.conf -v<br />
 python Leaky.py -c client2.conf -s source2.conf -t 9001 -v<br />
-python Leaky.py -c client2.conf -s source2.conf -p proxies2.conf -t 9001 -v<br />
+python Leaky.py -c client2.conf -s source2.conf -p proxy.conf -t 9001 -v<br />
 python Leaky.py --clients client3.conf --sources source3.conf --proxies proxy3.conf --timeout 9001 --verbose<br />
 <hr>
 
