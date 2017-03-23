@@ -34,6 +34,7 @@ The results could appear on various different paste sites, or other sources. Thi
 
 Fix current issues of Attribute None for text.
 Fix issue with reading proxy file and creating list.
+Implement # comments in the .conf files.
 Implmenet email or SNMP alerting when results are found.<br />
 Implement cron-tasks so it can be above googles data request threshold.<br />
 <hr>
