@@ -12,6 +12,7 @@
 clients.conf - contains line by line of the domain you wish to search.<br />
 sources.conf - contains line by line the sites you wish to search against.<br />
 proxy.conf - contains the proxies you wish to send requests through (faster).<br />
+<hr>
 
 <b>[+] Usage Examples:</b><br />
 
@@ -21,9 +22,9 @@ python Leaky.py -c client1.conf  -s source1.conf -v<br />
 python Leaky.py -c client2.conf -s source2.conf -t 9001 -v<br />
 python Leaky.py -c client2.conf -s source2.conf -p proxy.conf -t 9001 -v<br />
 python Leaky.py --clients client3.conf --sources source3.conf --proxies proxy3.conf --timeout 9001 --verbose<br />
-<hr>
 
 <img src="https://i.imgur.com/LPFHVv4.png" alt="Leaky.py" title="Leaky.py" />
+<hr>
 
 <b>[+] Description:</b><br />
 
