@@ -23,7 +23,7 @@ python Leaky.py -c client2.conf -s source2.conf -p proxy.conf -t 9001 -v<br />
 python Leaky.py --clients client3.conf --sources source3.conf --proxies proxy3.conf --timeout 9001 --verbose<br />
 <hr>
 
-<img src="https://i.imgur.com/LPFHVv4.png" alt="Leaky.py" title="Leaky.py" width="100" height="100" />
+<img src="https://i.imgur.com/LPFHVv4.png" alt="Leaky.py" title="Leaky.py" />
 
 <b>[+] Description:</b><br />
 
