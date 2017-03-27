@@ -10,20 +10,20 @@
 <b>[+] Defaults:</b><br />
 
 
--c --clients - clients.conf contains line by line of the domain you wish to search.<br />
+-c --clients - clients.conf - contains line by line of the domain you wish to search.<br />
 -s --sources - sources.conf - contains line by line the sites you wish to search against.<br />
 -p --proxies - proxy.conf - contains the proxies you wish to send requests through (faster).<br />
--t --timeout - 30 - This is the max time it will take for a request to timeout.<br />
--d --delay   - 15 - This is the delay between each request.<br />
--v --verbose - 
+-t --timeout - 30 - This is the max time in seconds it will take for a request to timeout.<br />
+-d --delay - 15 - This is the delay in seconds between each request.<br />
+-v --verbose - Showing a more verbose format.<br />
 <hr>
 
 <b>[+] Usage Examples:</b><br />
 
 screen python Leaky.py<br />
 python Leaky.py -c allclients.conf -s allsources.conf<br />
-python Leaky.py -c client1.conf  -s source1.conf -v<br />
-python Leaky.py -c client2.conf -s source2.conf -t 9001 -v<br />
+python Leaky.py -c client1.conf  -s source1.conf -d 10 -v<br />
+python Leaky.py -c client2.conf -s source2.conf -t 9001 -d 10 -v<br />
 python Leaky.py -c client2.conf -s source2.conf -p proxy.conf -t 9001 -v<br />
 python Leaky.py --clients client3.conf --sources source3.conf --proxies proxy3.conf --timeout 9001 --verbose<br />
 
