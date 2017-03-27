@@ -148,38 +148,10 @@ def readProxies():
 def readLists():
         try:
            if verbose is True:
-               print bcolors.WARNING,'[+] Total Proxies: ',len(bots),bcolors.ENDC
-               print bcolors.WARNING,'[+] Total Clients: ',len(domains),bcolors.ENDC
-               print bcolors.WARNING,'[+] Total Sources: ',len(sites),bcolors.ENDC
-        except KeyboardInterrupt:
-           print bcolors.FAIL,'[!] Stopped by User',bcolors.ENDC
-           exit(0)
-
-###################################################################################################################
-# Dork the crap outta the input
-###################################################################################################################
-
-def toolazy2google():
-        try:
-           for d in domains:
-                for s in sites:
-                    url = ('http://www.google.com/search?hl=en&as_q=&as_epq=' + d + '&as_qdr=all&as_sitesearch=' + s + '&as_occt=any')
-                    if proxies is not None:
-                        result = requests.get(url, proxies=bots, timeout=timeout)
-                    else:
-                        result = requests.get(url, timeout=timeout)
-                    soup = BeautifulSoup(result.text, 'html.parser')
-                    time.sleep(1)
-                    if ('No results found' in result.content):
-                        print bcolors.OKGREEN,'[+] Client:',d,'- [+] Was not found on source:',s,'[+] Search param:',d,'site:google.com',bcolors.ENDC
-                    elif ('did not match' in result.content):
-                        print bcolors.OKGREEN,'[+] Client:',d,'[+] Did not match onsource:',s,'[+] Search param:',d,'site:google.com',bcolors.ENDC
-                    if ('Our systems have detected unusual traffic from your computer' in result.content):
-                        print bcolors.FAIL,'[!] Google have implemented blocking. Try longer timeout, different host, or -p',bolors.ENDC
-                    else:
-                         print bcolors.FAIL,'[!] Client:',d,' [!] Found: ' + soup.find('div',{'id':'resultStats'}).text ,'[!] URL: ' + soup.find('cite').text ,'[+] Search param:',d,'site:google.com',bcolors.ENDC
-        except requests.exceptions.Timeout:
-           print bcolors.FAIL,'[!] Proxy timed out',bcolors.ENDC
+               print bcolors.BOLD,'[+] Total Proxies:',len(bots),bcolors.ENDC
+               print bcolors.BOLD,'[+] Total Clients:',len(domains),bcolors.ENDC
+               print bcolors.BOLD,'[+] Total Sources:',len(sites),bcolors.ENDC
+               print bcolors.BOLD,'[+] Timeout:',timeout,'seconds',bcolors.ENDC
         except KeyboardInterrupt:
            print bcolors.FAIL,'[!] Stopped by User',bcolors.ENDC
            exit(0)
@@ -192,6 +164,35 @@ readClients()
 readSources()
 readProxies()
 readLists()
-toolazy2google()
 
 ###################################################################################################################
+# Dork the crap outta the input
+###################################################################################################################
+
+try:
+   for d in domains:
+       for s in sites:
+           url = ('http://www.google.com/search?hl=en&as_q=&as_epq=' + d + '&as_qdr=all&as_sitesearch=' + s + '&as_occt=any')
+           if proxies is not None:
+              result = requests.get(url, proxies=bots, timeout=timeout)
+           else:
+               result = requests.get(url, timeout=timeout)
+               soup = BeautifulSoup(result.text, 'html.parser')
+           if ('No results found' in result.content):
+               print bcolors.OKGREEN,'[+] Client:',d,'[+] Was not found on source:',s,'[+] Search param:',d,'site:google.com',bcolors.ENDC
+           if ('did not match' in result.content):
+               print bcolors.OKGREEN,'[+] Client:',d,'[+] Did not match onsource:',s,'[+] Search param:',d,'site:google.com',bcolors.ENDC
+           if ('Our systems have detected unusual traffic from your computer' in result.content):
+               print bcolors.FAIL,'[!] Google have implemented blocking. Try longer timeout, different host, or -p',bcolors.ENDC
+               exit(0)
+           elif soup is None:
+               print bcolors.OKGREEN,'[+] Client:',d,'[+] Was not found on source:',s,'[+] Search param:',d,'site:google.com',bcolors.ENDC
+           else:
+               gold = (soup.find('div',{'id':'resultStats'}).text)
+               location = (soup.find('cite').text)
+               print bcolors.FAIL,'[!] Client:',d,' [!] Found: ' + gold + ' [!] URL: ' + location + ' [+] Search param:',d,'site:google.com',bcolors.ENDC
+except requests.exceptions.Timeout:
+    print bcolors.FAIL,'[!] Proxy timed out',bcolors.ENDC
+except KeyboardInterrupt:
+    print bcolors.FAIL,'[!] Stopped by User',bcolors.ENDC
+    exit(0)
