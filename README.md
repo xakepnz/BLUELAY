@@ -32,8 +32,9 @@ The results could appear on various different paste sites, or other sources. Thi
 
 <b>[+] To-Do:</b><br />
 
-Fix current issues of Attribute None for text.<br />
+<strike>Fix current issues of Attribute None for text.<br /></strike>
 Fix issue with reading proxy file and creating list.<br />
+Fix issue with timeouts and threading.<br />
 Implement # comments in the .conf files.<br />
 Implmenet email or SNMP alerting when results are found.<br />
 Implement cron-tasks so it can be above googles data request threshold.<br />
