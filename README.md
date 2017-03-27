@@ -9,9 +9,13 @@
 
 <b>[+] Defaults:</b><br />
 
-clients.conf - contains line by line of the domain you wish to search.<br />
-sources.conf - contains line by line the sites you wish to search against.<br />
-proxy.conf - contains the proxies you wish to send requests through (faster).<br />
+
+-c --clients - clients.conf contains line by line of the domain you wish to search.<br />
+-s --sources - sources.conf - contains line by line the sites you wish to search against.<br />
+-p --proxies - proxy.conf - contains the proxies you wish to send requests through (faster).<br />
+-t --timeout - 30 - This is the max time it will take for a request to timeout.<br />
+-d --delay   - 15 - This is the delay between each request.<br />
+-v --verbose - 
 <hr>
 
 <b>[+] Usage Examples:</b><br />
