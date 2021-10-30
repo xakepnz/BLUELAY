@@ -2,13 +2,15 @@
 
 ## Description:
 
-Searches online paste sites for certain search terms which can indicate a possible data breach.<br />
-For example if your client signed up to a small business website, which ended up being a victim of a data breach.<br />
-The results could appear on various different paste sites, or other sources. This tool searches for domains on those specified sources.
+Search keywords against websites that have been indexed/spidered by Google.<br />
+* Choose what sites to search against, what keywords to search for.<br />
+* Examples could be: hash values, private secrets, email addresses or simply domain names.<br />
+* Optionally proxy your requests through custom proxies to avoid Google banning.<br />
 
-## Poc:
+## Proof of Concept:
 
-<b>keyword: BLUELAY source: github.com</b>
+* keywords.conf: BLUELAY
+* sources.conf: github.com
 
 ![Alt](/poc.jpg "Proof of Concept")
 
@@ -18,12 +20,15 @@ The results could appear on various different paste sites, or other sources. Thi
 git clone https://github.com/xakepnz/BLUELAY.git
 cd BLUELAY
 pip install -r requirements.txt
-python3 bluelay.py
 ```
 
 ## Usage:
 
-Edit the three config files.<br />
+```bash
+python3 bluelay.py
+```
+
+Edit the three config files:<br />
 * keywords.conf containing all the keywords you want to search for.<br />
 * sources.conf all of the sites you want to search against.<br />
 * proxies.conf proxies to route requests through, to avoid Google ban.<br />
