@@ -1,48 +1,60 @@
-# Leaky.py
-										 
-<b>[+] Website:</b> https://intellipedia.ch<br />
-<b>[+] Name:</b> Leaky.py<br />
-<b>[+] Author:</b> xakep<br />
-<b>[+] Date:</b> March 2017<br />
-<b>[+] OS:</b> Linux<br />
-<hr>
+# BLUELAY
 
-<b>[+] Defaults:</b><br />
-
-
--c --clients - clients.conf - contains line by line of the domain you wish to search.<br />
--s --sources - sources.conf - contains line by line the sites you wish to search against.<br />
--p --proxies - proxy.conf - contains the proxies you wish to send requests through (faster).<br />
--t --timeout - 30 - This is the max time in seconds it will take for a request to timeout.<br />
--d --delay - 15 - This is the delay in seconds between each request.<br />
--v --verbose - Showing a more verbose format.<br />
-<hr>
-
-<b>[+] Usage Examples:</b><br />
-
-screen python Leaky.py<br />
-python Leaky.py -c allclients.conf -s allsources.conf<br />
-python Leaky.py -c client1.conf  -s source1.conf -d 10 -v<br />
-python Leaky.py -c client2.conf -s source2.conf -t 9001 -d 10 -v<br />
-python Leaky.py -c client2.conf -s source2.conf -p proxy.conf -t 9001 -v<br />
-python Leaky.py --clients client3.conf --sources source3.conf --proxies proxy3.conf --timeout 9001 --verbose<br />
-
-<img src="https://i.imgur.com/LPFHVv4.png" alt="Leaky.py" title="Leaky.py" />
-<hr>
-
-<b>[+] Description:</b><br />
+## Description:
 
 Searches online paste sites for certain search terms which can indicate a possible data breach.<br />
 For example if your client signed up to a small business website, which ended up being a victim of a data breach.<br />
 The results could appear on various different paste sites, or other sources. This tool searches for domains on those specified sources.
-<hr>
 
-<b>[+] To-Do:</b><br />
+## Poc:
 
-<strike>Fix current issues of Attribute None for text.<br /></strike>
-Fix issue with reading proxy file and creating list.<br />
-Fix issue with timeouts and threading.<br />
-Implement # comments in the .conf files.<br />
-Implmenet email or SNMP alerting when results are found.<br />
-Implement cron-tasks so it can be above googles data request threshold.<br />
-<hr>
+<b>keyword: BLUELAY source: github.com</b>
+
+![Alt](/poc.jpg "Proof of Concept")
+
+## Install:
+
+```bash
+git clone https://github.com/xakepnz/BLUELAY.git
+cd BLUELAY
+pip install -r requirements.txt
+python3 bluelay.py
+```
+
+## Usage:
+
+Edit the three config files.<br />
+* keywords.conf containing all the keywords you want to search for.<br />
+* sources.conf all of the sites you want to search against.<br />
+* proxies.conf proxies to route requests through, to avoid Google ban.<br />
+
+## Examples:
+
+<b>keywords.conf</b>
+```bash
+# These are the keywords to search against Google. They can be simply domain names, or specific terminology.
+# Anything behind a hashtag like this line, will be ignored.
+BLUELAY
+```
+
+<b>sources.conf</b>
+```bash
+# These are new line separated domain names that you want to search against.
+# The domain names must be able to be indexed/spidered by Google.
+# Anything behind a hashtag like this line, will be ignored.
+# pastebin.com
+# pastie.org.ru
+# paste.org
+# hackforums.net
+# antichat.ru
+github.com
+```
+
+<b>proxies.conf</b>
+```bash
+# Enter new proxies below on a new line
+# Anything behind a hashtag like this line, will be ignored.
+# Format: schema://ip_or_domain:port
+# http://1.1.1.1:80
+# https://1.1.1.1:443
+```
